@@ -1,3 +1,4 @@
+import { NODE_ENV } from '@src/config';
 import { Request } from 'express';
 import morgan, { StreamOptions } from 'morgan';
 import logger from './logger';
@@ -16,11 +17,10 @@ morgan.token('id', (req: Request) => (req as any).id || 'anonymous');
 // Define log format
 const morganFormat =
   ':method :url :status :res[content-length] - :response-time ms :id';
-
 // HTTP logging middleware
 const httpLogger = morgan(morganFormat, {
   stream,
-  skip: () => process.env.NODE_ENV === 'test',
+  skip: () => NODE_ENV === 'test',
 });
 
 export default httpLogger;
