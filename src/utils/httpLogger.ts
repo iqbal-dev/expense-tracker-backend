@@ -20,7 +20,7 @@ const morganFormat =
 // HTTP logging middleware
 const httpLogger = morgan(morganFormat, {
   stream,
-  skip: () => NODE_ENV === 'test',
+  skip: () => NODE_ENV === 'development',
 });
 
 export default httpLogger;

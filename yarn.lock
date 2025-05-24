@@ -315,6 +315,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/cors@npm:^2.8.18":
+  version: 2.8.18
+  resolution: "@types/cors@npm:2.8.18"
+  dependencies:
+    "@types/node": "*"
+  checksum: 6e49b741345e67834cd19d766228509e4b37d6d5c272355bb059502b4787f5adf58776d9114ac5f0f407966e0347ae8d1f995d7ea41e6a24f716d36b3010401b
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:^1.0.6":
   version: 1.0.7
   resolution: "@types/estree@npm:1.0.7"
@@ -342,6 +351,15 @@ __metadata:
     "@types/express-serve-static-core": ^5.0.0
     "@types/serve-static": "*"
   checksum: c6f73c75c2b62e293e5fadcfd7de61716e3d0c0eaecda082b1921c9c8e56ddc37c530c5d4d68404794b38c7e8f5b893719ffc04c6fba2efa2fb13223bfb0346b
+  languageName: node
+  linkType: hard
+
+"@types/helmet@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/helmet@npm:4.0.0"
+  dependencies:
+    helmet: "*"
+  checksum: ded60d8d9960edbae4d10603511dca9b9c50a9937f49e0d2b14bc096302e85a038acd443889a132dab60bc950bfd0e47337bdca485d75bbb7b6224f74fc50ab7
   languageName: node
   linkType: hard
 
@@ -1448,7 +1466,9 @@ __metadata:
   resolution: "expense-tracker@workspace:."
   dependencies:
     "@eslint/js": ^9.27.0
+    "@types/cors": ^2.8.18
     "@types/express": ^5.0.2
+    "@types/helmet": ^4.0.0
     "@types/morgan": ^1.9.9
     "@types/multer": ^1.4.12
     "@types/node": ^22.15.21
@@ -1461,6 +1481,7 @@ __metadata:
     eslint-config-prettier: ^10.1.5
     express: ^5.1.0
     globals: ^16.1.0
+    helmet: ^8.1.0
     husky: ^9.1.7
     lint-staged: ^16.0.0
     mongoose: ^8.15.0
@@ -1476,6 +1497,7 @@ __metadata:
     typescript-eslint: ^8.32.1
     winston: ^3.17.0
     winston-daily-rotate-file: ^5.0.0
+    zod: ^3.25.28
   languageName: unknown
   linkType: soft
 
@@ -1892,6 +1914,13 @@ __metadata:
   dependencies:
     function-bind: ^1.1.2
   checksum: e8516f776a15149ca6c6ed2ae3110c417a00b62260e222590e54aa367cbcd6ed99122020b37b7fbdf05748df57b265e70095d7bf35a47660587619b15ffb93db
+  languageName: node
+  linkType: hard
+
+"helmet@npm:*, helmet@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "helmet@npm:8.1.0"
+  checksum: 58febddc95becb457a7dd5d062500b9e68437d4991b7a9d9455af63f35740962c258d2656cbed367fbd5704da5758408b674b2a6013e589a4a6b02be0a8d5f4e
   languageName: node
   linkType: hard
 
@@ -4154,5 +4183,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.25.28":
+  version: 3.25.28
+  resolution: "zod@npm:3.25.28"
+  checksum: 14ee96fb475e2096300348f5ba2bb6a1f17586567ac32e26599766850a2d58bab31f95e2b264db79e753bdab0f251b61f0ef25fe8a2e55a06a661066aed467f4
   languageName: node
   linkType: hard
