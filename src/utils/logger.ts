@@ -6,8 +6,8 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 const { combine, timestamp, errors, splat, json, colorize, printf } = format;
 
 const isProduction = process.env.NODE_ENV === 'production';
+const logDir = path.resolve(process.cwd(), 'logs');
 
-const logDir = path.join(__dirname, '..', 'logs');
 if (!fs.existsSync(logDir)) {
   fs.mkdirSync(logDir, { recursive: true });
 }
