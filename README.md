@@ -80,13 +80,13 @@ JWT_SECRET=supersecret
 
 ## 🔧 Scripts
 
-| Command       | Description                       |
-| ------------- | --------------------------------- |
-| `yarn dev`    | Start dev server with ts-node-dev |
-| `yarn build`  | Build TypeScript into `dist`      |
-| `yarn start`  | Run built app                     |
-| `yarn lint`   | Run ESLint                        |
-| `yarn format` | Format code with Prettier         |
+| Command         | Description                       |
+| --------------- | --------------------------------- |
+| `yarn dev`      | Start dev server with ts-node-dev |
+| `yarn build`    | Build TypeScript into `dist`      |
+| `yarn start`    | Run built app                     |
+| `yarn lint`     | Run ESLint                        |
+| `yarn prettier` | Format code with Prettier         |
 
 ---
 
