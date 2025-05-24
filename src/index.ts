@@ -6,7 +6,7 @@ import logger from './utils/logger';
 // or just import dotenv and call dotenv.config() directly in this file
 
 const app = express();
-
+console.log('hello');
 app.use(attachRequestId);
 app.use(httpLogger);
 
