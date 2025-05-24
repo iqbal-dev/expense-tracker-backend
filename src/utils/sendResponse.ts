@@ -1,12 +1,11 @@
-// src/utils/sendResponse.ts
 import { GenericResponse } from '@src/types/response';
 import { Response } from 'express';
 
 export function sendSuccess<T>(
   res: Response,
   message: string,
-  data?: T,
   statusCode = 200,
+  data?: T,
 ) {
   const payload: GenericResponse<T> = {
     success: true,

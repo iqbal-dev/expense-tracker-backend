@@ -2,11 +2,16 @@
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
+import path from 'path';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
 import { errorHandler } from './middlewares/errorHandler';
 import { notFoundHandler } from './middlewares/notFound';
 import { attachRequestId } from './middlewares/requestId';
+import v1Routes from './routes/v1.routes';
 import httpLogger from './utils/httpLogger';
 
+const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
 const app: Application = express();
 
 // Security & CORS
@@ -24,7 +29,9 @@ app.use(attachRequestId);
 app.use(httpLogger);
 
 // Routes
-// app.use('/api/users', userRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// API Versioning with modular routes
+app.use('/api/v1', v1Routes);
 
 // Not found route handler
 app.use(notFoundHandler);
