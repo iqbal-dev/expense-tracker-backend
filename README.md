@@ -54,7 +54,7 @@ expense-tracker/
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourname/expense-tracker-api.git
+git clone https://github.com/iqbal-dev/expense-tracker-api.git
 cd expense-tracker-api
 yarn install
 ```
@@ -80,13 +80,13 @@ JWT_SECRET=supersecret
 
 ## 🔧 Scripts
 
-| Command       | Description                            |
-|---------------|----------------------------------------|
-| `yarn dev`    | Start dev server with ts-node-dev      |
-| `yarn build`  | Build TypeScript into `dist`           |
-| `yarn start`  | Run built app                          |
-| `yarn lint`   | Run ESLint                             |
-| `yarn format` | Format code with Prettier              |
+| Command       | Description                       |
+| ------------- | --------------------------------- |
+| `yarn dev`    | Start dev server with ts-node-dev |
+| `yarn build`  | Build TypeScript into `dist`      |
+| `yarn start`  | Run built app                     |
+| `yarn lint`   | Run ESLint                        |
+| `yarn format` | Format code with Prettier         |
 
 ---
 
@@ -224,5 +224,3 @@ Tests are not yet implemented. Recommended tools:
 MIT License © 2025 [Your Name or Company]
 
 ---
-
-**Happy building!** 🚀
