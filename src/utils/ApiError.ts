@@ -1,8 +1,9 @@
-// src/utils/ApiError.ts
+import { HttpStatus } from '@src/constants/httpStatus';
+
 export class ApiError extends Error {
   statusCode: number;
 
-  constructor(message: string, statusCode = 500) {
+  constructor(message: string, statusCode = HttpStatus.INTERNAL_SERVER_ERROR) {
     super(message);
     this.statusCode = statusCode;
 
