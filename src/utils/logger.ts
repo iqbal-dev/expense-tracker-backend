@@ -1,3 +1,4 @@
+import { NODE_ENV } from '@src/config';
 import fs from 'fs';
 import path from 'path';
 import { createLogger, format, Logger, transports } from 'winston';
@@ -5,7 +6,8 @@ import DailyRotateFile from 'winston-daily-rotate-file';
 
 const { combine, timestamp, errors, splat, json, colorize, printf } = format;
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = NODE_ENV === 'production';
+
 const logDir = path.resolve(process.cwd(), 'logs');
 
 if (!fs.existsSync(logDir)) {
