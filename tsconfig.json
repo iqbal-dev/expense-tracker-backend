@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext", // Target modern JavaScript
-    "module": "commonjs", // Use commonjs module system
-    "strict": true, // Enable strict type checking
-    "esModuleInterop": true, // Ensure compatibility with CommonJS and ES modules
-    "skipLibCheck": true, // Skip library checks for faster build times
-    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in imports
-    "outDir": "./dist", // Output directory for compiled JavaScript
-    "rootDir": "./src", // Root directory for your TypeScript source files
-    "baseUrl": ".", // Set the base URL for module resolution
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"] // Configure path aliases
-    }
+      "@src/*": ["src/*"]
+    },
+    "outDir": "./dist"
   },
-  "include": ["src/**/*.ts"], // Include all .ts files in the src folder
-  "exclude": ["node_modules"] // Exclude node_modules from compilation
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
