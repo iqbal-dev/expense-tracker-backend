@@ -32,11 +32,11 @@ expense-tracker/
 │   ├── utils/
 │   ├── types/
 │   ├── modules/
-│   │   ├── auth/
-│   │   ├── user/
-│   │   ├── expense/
-│   │   ├── category/
-│   │   └── budget/
+│   │   ├── auth/v1
+│   │   ├── user/v1
+│   │   ├── expense/v1
+│   │   ├── category/v1
+│   │   └── budget/v1
 │   └── docs/
 ├── logs/
 ├── .env
