@@ -1,5 +1,3 @@
-// src/server.ts
-
 import mongoose from 'mongoose';
 import app from './app';
 import { MONGODB_URI, PORT } from './config';
