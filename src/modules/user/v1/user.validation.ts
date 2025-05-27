@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { passwordRegex } from './user.utils';
-export const createUserSchema = z.object({
+export const createUserValidationSchema = z.object({
   name: z.string().min(3, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
   password: z
@@ -11,7 +11,7 @@ export const createUserSchema = z.object({
     ),
 });
 
-export const updateUserSchema = z.object({
+export const updateUserValidationSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').optional(),
   email: z.string().email('Invalid email address').optional(),
   password: z
