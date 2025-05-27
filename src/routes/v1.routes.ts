@@ -1,12 +1,9 @@
-import { sendSuccess } from '@src/utils/sendResponse';
+import userRoute from '@src/modules/user/v1/user.route';
 import { Router } from 'express';
 // Add more module routes...
 
 const router = Router();
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-router.use('/', (_req, res, _next) => {
-  sendSuccess(res, 'Api version connected');
-});
+router.use('/users', userRoute);
 
 export default router;
