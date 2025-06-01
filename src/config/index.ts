@@ -1,4 +1,4 @@
-// config.ts (optional)
+
 import dotenv from 'dotenv';
 
 dotenv.config();
