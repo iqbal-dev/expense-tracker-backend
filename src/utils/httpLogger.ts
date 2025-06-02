@@ -10,7 +10,7 @@ const stream: StreamOptions = {
   },
 };
 
-// Optional: Add request ID to logs
+// Add request ID to logs
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 morgan.token('id', (req: Request) => (req as any).id || 'anonymous');
 
