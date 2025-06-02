@@ -3,22 +3,20 @@ version: '3.8'
 services:
   app:
     build: .
-    ports:
-      - '5000:5000'
-    env_file:
-      - .env
     depends_on:
       - mongo
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+    environment:
+      - MONGODB_TEST_URI=mongodb://mongo:27017/expense-tracker-test
+    command: npm run test
+    networks:
+      - backend
 
   mongo:
-    image: mongo:7
+    image: mongo:6
     ports:
       - '27017:27017'
-    volumes:
-      - mongo-data:/data/db
+    networks:
+      - backend
 
-volumes:
-  mongo-data:
+networks:
+  backend:

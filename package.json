@@ -11,9 +11,11 @@
     "lint:fix": "npx eslint src --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
     "prettier:fix": "npx prettier --write src",
-     "test": "jest --runInBand --detectOpenHandles",
+    "test": "jest --runInBand --detectOpenHandles",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "docker-up-build": "docker compose up --build",
+    "docker-down": "docker compose down"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -43,6 +45,7 @@
     "morgan": "^1.10.0",
     "multer": "^2.0.0",
     "swagger-ui-express": "^5.0.1",
+    "uuid": "^11.1.0",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
     "yamljs": "^0.3.0",

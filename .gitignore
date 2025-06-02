@@ -132,8 +132,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 .yarn
-.yarn.lock
-.pnpm-lock.yaml
+yarn.lock
+pnpm-lock.yaml
+
 
 ### Node Patch ###
 # Serverless Webpack directories

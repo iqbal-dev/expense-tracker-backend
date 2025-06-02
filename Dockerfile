@@ -1,8 +1,8 @@
 # Base image
-FROM node:20
+FROM node:18
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
