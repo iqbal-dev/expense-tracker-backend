@@ -19,3 +19,16 @@ jobs:
 
       - name: Run Docker Compose
         run: docker compose up --abort-on-container-exit --exit-code-from app
+      - name: Notify Slack (On Failure)
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"❌ CI Failed for '${{ github.repository }}' on branch '${{ github.ref_name }}'. Commit: ${{ github.sha }}"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notify Slack (On Success)
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ CI Passed for '${{ github.repository }}' on branch '${{ github.ref_name }}'. Commit: ${{ github.sha }}"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
