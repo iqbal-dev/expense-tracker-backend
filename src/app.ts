@@ -1,6 +1,6 @@
 // src/app.ts
 import cors from 'cors';
-import express, { Application } from 'express';
+import express, { Application, Request, Response } from 'express';
 import helmet from 'helmet';
 import path from 'path';
 import swaggerUi from 'swagger-ui-express';
@@ -29,6 +29,14 @@ app.use(attachRequestId);
 
 // HTTP logger
 app.use(httpLogger);
+// Health check endpoint
+app.get('/', (req: Request, res: Response) => {
+  res.status(200).json({
+    statusCode: 200,
+    success: true,
+    message: 'Hello server',
+  });
+});
 
 // Routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
