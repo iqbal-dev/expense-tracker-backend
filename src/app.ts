@@ -1,6 +1,6 @@
 // src/app.ts
 import cors from 'cors';
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import helmet from 'helmet';
 import path from 'path';
 import swaggerUi from 'swagger-ui-express';
@@ -11,9 +11,7 @@ import { attachRequestId } from './middlewares/requestId';
 import v1Routes from './routes/v1.routes';
 import httpLogger from './utils/httpLogger';
 
-const swaggerDocument = YAML.load(
-  path.join(process.cwd(), 'src/docs/swagger.yaml'),
-);
+const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
 const app: Application = express();
 
 // Security & CORS
@@ -29,14 +27,6 @@ app.use(attachRequestId);
 
 // HTTP logger
 app.use(httpLogger);
-// Health check endpoint
-app.get('/', (req: Request, res: Response) => {
-  res.status(200).json({
-    statusCode: 200,
-    success: true,
-    message: 'Hello server',
-  });
-});
 
 // Routes
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
