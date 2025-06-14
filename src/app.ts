@@ -11,7 +11,9 @@ import { attachRequestId } from './middlewares/requestId';
 import v1Routes from './routes/v1.routes';
 import httpLogger from './utils/httpLogger';
 
-const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
+const swaggerDocument = YAML.load(
+  path.join(process.cwd(), 'src/docs/swagger.yaml'),
+);
 const app: Application = express();
 
 // Security & CORS
