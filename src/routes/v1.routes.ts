@@ -4,5 +4,5 @@ import { Router } from 'express';
 const router = Router();
 
 router.use('/users', userRoute);
-router.use('/auth', authRoutedgfsd);
+router.use('/auth', authRoutedgfsdsd);
 export default router;
