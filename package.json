@@ -4,7 +4,6 @@
   "description": "A RESTful backend service for managing personal and shared expenses, budgets, and financial reports.",
   "main": "dist/server.js",
   "scripts": {
-    "postinstall": "node scripts/setupHusky.mjs",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/server.ts",
     "build": "tsc && cp -r src/docs dist/docs && tsc-alias",
