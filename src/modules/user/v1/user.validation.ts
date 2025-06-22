@@ -9,6 +9,7 @@ export const createUserValidationSchema = z.object({
       passwordRegex,
       'Password must be at least 6 characters and include one uppercase letter, one number, and one special character',
     ),
+  avatarUrl: z.string().optional(),
 });
 
 export const updateUserValidationSchema = z.object({
@@ -21,4 +22,5 @@ export const updateUserValidationSchema = z.object({
       'Password must be at least 6 characters and include one uppercase letter, one number, and one special character',
     )
     .optional(),
+  avatarUrl: z.string().optional(),
 });

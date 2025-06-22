@@ -4,6 +4,7 @@
   "description": "A RESTful backend service for managing personal and shared expenses, budgets, and financial reports.",
   "main": "dist/server.js",
   "scripts": {
+    "prepare": "husky install",
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/server.ts",
     "build": "tsc && cp -r src/docs dist/docs && tsc-alias",
@@ -37,6 +38,7 @@
   "author": "Md Iqbal Hossain",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/helmet": "^4.0.0",

@@ -1,0 +1,21 @@
+import validateRequest from '@src/middlewares/validateRequest';
+import * as userController from '@src/modules/user/v1/user.controller';
+import { createUserValidationSchema } from '@src/modules/user/v1/user.validation';
+import { Router } from 'express';
+import * as authController from './auth.controller';
+import { loginUserValidationSchema } from './auth.validation';
+
+const router = Router();
+
+router.post(
+  '/register',
+  validateRequest(createUserValidationSchema),
+  userController.createUser,
+);
+router.post(
+  '/login',
+  validateRequest(loginUserValidationSchema),
+  authController.loginUser,
+);
+
+export default router;

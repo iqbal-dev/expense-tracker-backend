@@ -12,6 +12,7 @@ const userSchema = new Schema<TUser>(
     password: {
       type: String,
       required: [true, 'Password is required'],
+      select: false
     },
     email: {
       type: String,
@@ -20,6 +21,10 @@ const userSchema = new Schema<TUser>(
       lowercase: true,
       trim: true,
       match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address'],
+    },
+    avatarUrl: {
+      type: String,
+      default: '',
     },
   },
   {
