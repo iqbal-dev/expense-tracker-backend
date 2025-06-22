@@ -1,5 +1,3 @@
-// src/types/response.ts
-
 export type GenericResponse<T> = {
   success: true;
   message: string;
