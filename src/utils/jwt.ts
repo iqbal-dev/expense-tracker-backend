@@ -1,6 +1,7 @@
 import { jwtExpiresIn, jwtSecret } from '@src/config';
+import { CustomJwtPayload } from '@src/types/custom-jwt';
 import logger from '@src/utils/logger';
-import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
 // Interface for the payload
 type TokenPayload = {
@@ -18,12 +19,12 @@ export const generateToken = (
   return jwt.sign(payload, jwtSecret, options);
 };
 
-export const verifyToken = (token: string): JwtPayload | null => {
+export const verifyToken = (token: string): CustomJwtPayload | null => {
   try {
     const decoded = jwt.verify(token, jwtSecret);
 
     if (typeof decoded === 'object' && decoded !== null) {
-      return decoded as JwtPayload;
+      return decoded as CustomJwtPayload;
     }
 
     return null;

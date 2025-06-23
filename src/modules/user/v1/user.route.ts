@@ -1,10 +1,9 @@
-import validateRequest from '@src/middlewares/validateRequest';
+import { authMiddleware } from '@src/middlewares/auth';
 import { Router } from 'express';
-import { createUser } from './user.controller';
-import { createUserValidationSchema } from './user.validation';
+import * as userController from './user.controller';
 
 const router = Router();
 
-router.post('/', validateRequest(createUserValidationSchema), createUser);
+router.post('/me', authMiddleware, userController.getUserProfile);
 
 export default router;
