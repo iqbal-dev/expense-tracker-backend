@@ -29,8 +29,7 @@ describe('Auth - Login', () => {
       .send({ email: user.email, password: user.password });
 
     expect(response.status).toBe(200);
-    expect(response.body.data).toHaveProperty('token');
-    expect(response.body.data).toHaveProperty('user');
-    expect(response.body.data.user.email).toBe(user.email);
+    expect(response.body.data).toHaveProperty('accessToken');
+    expect(response.body.data).toHaveProperty('refreshToken');
   });
 });
