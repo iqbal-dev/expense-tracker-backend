@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// src/middlewares/errorHandler.ts
+
 import { HttpStatus } from '@src/constants/httpStatus';
 import { ErrorResponse } from '@src/types/response';
 import { ApiError } from '@src/utils/ApiError';

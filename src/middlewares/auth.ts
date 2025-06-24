@@ -1,6 +1,6 @@
 import { HttpStatus } from '@src/constants/httpStatus';
 import { ApiError } from '@src/utils/ApiError';
-import { verifyToken } from '@src/utils/jwt';
+import { verifyAccessToken } from '@src/utils/jwt';
 import { NextFunction, Request, Response } from 'express';
 export const authMiddleware = (
   req: Request,
@@ -16,7 +16,7 @@ export const authMiddleware = (
   }
 
   const token = authHeader.split(' ')[1];
-  const decoded = verifyToken(token);
+  const decoded = verifyAccessToken(token);
   if (!decoded) {
     throw new ApiError(
       'Unauthorized: Invalid token or expired token',
