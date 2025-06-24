@@ -32,3 +32,16 @@ export const getUserById = async (
   const user = await User.findById(userId).select('-password');
   return user ? user?.toObject() : null;
 };
+
+/**
+ * Retrieves a user by their email address, excluding the password field from the result.
+ *
+ * @param email - The email address of the user to retrieve.
+ * @returns A promise that resolves to the user object without the password field, or null if no user is found.
+ */
+export const getUserByEmail = async (
+  email: string,
+): Promise<Omit<TUser, 'password'> | null> => {
+  const user = await User.findOne({ email: email.trim() }).select('-password');
+  return user ? user?.toObject() : null;
+};

@@ -17,5 +17,6 @@ router.post(
   validateRequest(loginUserValidationSchema),
   authController.loginUser,
 );
+router.get('/refresh-token', authController.refreshAccessToken);
 
 export default router;
