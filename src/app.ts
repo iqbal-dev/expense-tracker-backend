@@ -10,7 +10,7 @@ import { notFoundHandler } from './middlewares/notFound';
 import { attachRequestId } from './middlewares/requestId';
 import v1Routes from './routes/v1.routes';
 import httpLogger from './utils/httpLogger';
-
+import cookieParser from 'cookie-parser';
 const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
 const app: Application = express();
 
@@ -21,6 +21,7 @@ app.use(helmet());
 // Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Request ID middleware (optional)
 app.use(attachRequestId);
