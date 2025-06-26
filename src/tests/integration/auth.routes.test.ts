@@ -1,4 +1,5 @@
 import app from '@src/app';
+import { HttpStatus } from '@src/constants/httpStatus';
 import request from 'supertest';
 
 const agent = request.agent(app);
@@ -13,7 +14,7 @@ describe('Auth Integration - Register, Login, Refresh, Logout', () => {
   it('POST /api/v1/auth/register should create a new user', async () => {
     const res = await agent.post('/api/v1/auth/register').send(user);
 
-    expect(res.status).toBe(201);
+    expect(res.status).toBe(HttpStatus.CREATED);
     expect(res.body.data).toHaveProperty('_id');
     expect(res.body.data.email).toBe(user.email);
   });
@@ -24,7 +25,7 @@ describe('Auth Integration - Register, Login, Refresh, Logout', () => {
       password: user.password,
     });
 
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(HttpStatus.OK);
     expect(res.body.data.accessToken).toBeDefined();
 
     const cookies = res.headers['set-cookie'];
@@ -35,14 +36,14 @@ describe('Auth Integration - Register, Login, Refresh, Logout', () => {
   it('POST /api/v1/auth/refresh-token should return new access token using cookie', async () => {
     const res = await agent.get('/api/v1/auth/refresh-token');
 
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(HttpStatus.OK);
     expect(res.body.data.accessToken).toBeDefined();
   });
 
   it('POST /api/v1/auth/logout should clear refresh token cookie', async () => {
     const res = await agent.post('/api/v1/auth/logout');
 
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(HttpStatus.OK);
     const cookies = res.headers['set-cookie'];
     expect(cookies).toBeDefined();
     expect(cookies[0]).toMatch(/refreshToken=;/); // cookie cleared
@@ -50,6 +51,6 @@ describe('Auth Integration - Register, Login, Refresh, Logout', () => {
 
   it('POST /api/v1/auth/refresh-token should fail after logout', async () => {
     const res = await agent.get('/api/v1/auth/refresh-token');
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(HttpStatus.BAD_REQUEST);
   });
 });
