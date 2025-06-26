@@ -143,6 +143,38 @@ paths:
         '401':
           description: Invalid credentials
 
+  /auth/refresh-token:
+    get:
+      tags: [Auth]
+      summary: Refresh access token using HTTP-only cookie
+      description: |
+        Issues a new access token using a refresh token stored in an HTTP-only cookie.
+        The client must send cookies with the request (e.g., `withCredentials: true`).
+      responses:
+        '200':
+          description: New access token issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+        '403':
+          description: Invalid or expired refresh token
+        '401':
+          description: Refresh token cookie missing
+
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Logout user and clear refresh token cookie
+      description: |
+        Logs the user out by clearing the HTTP-only refresh token cookie.
+      responses:
+        '200':
+          description: Logged out successfully
+
   /users/me:
     get:
       tags: [Users]
