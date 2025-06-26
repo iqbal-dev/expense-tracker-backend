@@ -30,3 +30,8 @@ export const refreshAccessToken = catchAsync(async (req, res) => {
     accessToken: newAccessToken,
   });
 });
+
+export const logout = catchAsync(async (req, res) => {
+  res.clearCookie('refreshToken', { ...cookieOptions, sameSite: 'strict' });
+  sendSuccess(res, 'User logged out successfully', HttpStatus.OK);
+});
