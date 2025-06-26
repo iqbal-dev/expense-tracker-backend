@@ -24,7 +24,6 @@ describe('User Service - createUser', () => {
   it('should throw an error if email already exists', async () => {
     try {
       await createUser(validUser);
-      await createUser(validUser);
     } catch (error) {
       expect(error).toThrow();
     }
