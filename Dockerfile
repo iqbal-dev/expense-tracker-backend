@@ -1,18 +1,31 @@
-# Base image
-FROM node:18
+# --- Stage 1: Builder ---
+FROM node:18-alpine AS builder
 
-# Create app directory
 WORKDIR /app
 
-# Install app dependencies
 COPY package*.json ./
+
+# Install all dependencies, including dev
 RUN npm install
 
-# Bundle app source
 COPY . .
 
-# Expose port
+# Build the project (e.g., compile TypeScript)
+RUN npm run build
+
+
+# --- Stage 2: Production (slim) ---
+FROM node:18-alpine AS production
+
+WORKDIR /app
+
+# Only copy production files
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
+
+# Install only production dependencies
+RUN npm install --omit=dev
+
 EXPOSE 5000
 
-# Start the server
-CMD ["npm", "run", "start"]
+CMD ["node", "dist/server.js"]
