@@ -1,10 +1,12 @@
 import { z } from 'zod';
 import {
   createUserValidationSchema,
+  updateUserPasswordValidationSchema,
   updateUserValidationSchema,
 } from './user.validation';
 
 export type TUser = {
+  _id: string;
   name: string;
   password: string;
   email: string;
@@ -15,3 +17,6 @@ export type TUser = {
 
 export type TCreateUserInput = z.infer<typeof createUserValidationSchema>;
 export type TUpdateUserInput = z.infer<typeof updateUserValidationSchema>;
+export type TUpdateUserPasswordInput = z.infer<
+  typeof updateUserPasswordValidationSchema
+>;

@@ -24,3 +24,15 @@ export const updateUserValidationSchema = z.object({
     .optional(),
   avatarUrl: z.string().optional(),
 });
+
+export const updateUserPasswordValidationSchema = z.object({
+  currentPassword: z
+    .string()
+    .min(6, 'Current password must be at least 6 characters'),
+  newPassword: z
+    .string()
+    .regex(
+      passwordRegex,
+      'New password must be at least 6 characters and include one uppercase letter, one number, and one special character',
+    ),
+});

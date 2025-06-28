@@ -1,4 +1,5 @@
 import { HttpStatus } from '@src/constants/httpStatus';
+import { cookieOptions } from '@src/modules/auth/v1/auth.constant';
 import { ApiError } from '@src/utils/ApiError';
 import { catchAsync } from '@src/utils/catchAsync';
 import { sendSuccess } from '@src/utils/sendResponse';
@@ -51,4 +52,52 @@ export const getUserProfile = catchAsync(async (req, res) => {
     HttpStatus.OK,
     result,
   );
+});
+export const updateUserProfile = catchAsync(async (req, res) => {
+  const userId = req.user?.userId;
+  if (!userId) {
+    throw new ApiError('User ID is required', HttpStatus.BAD_REQUEST);
+  }
+
+  if (!req.body || Object.keys(req.body).length === 0) {
+    throw new ApiError('No data provided for update', HttpStatus.BAD_REQUEST);
+  }
+
+  const name = req.body?.name || '';
+  const email = req.body?.email || '';
+  const avatarUrl = req.body?.avatarUrl || '';
+  const password = req.body?.password || '';
+
+  const result = await userService.updateUser(userId, {
+    name,
+    email,
+    avatarUrl,
+    password,
+  });
+
+  sendSuccess(res, 'User profile updated successfully', HttpStatus.OK, result);
+});
+
+export const updateUserPassword = catchAsync(async (req, res) => {
+  const userId = req.user?.userId;
+  const { currentPassword, newPassword } = req.body;
+  if (!currentPassword || !newPassword) {
+    throw new ApiError(
+      'Current and new passwords are required',
+      HttpStatus.BAD_REQUEST,
+    );
+  }
+  if (!userId) {
+    throw new ApiError('User ID is required', HttpStatus.BAD_REQUEST);
+  }
+
+  const result = await userService.changePassword(
+    userId,
+    currentPassword,
+    newPassword,
+  );
+
+  res.clearCookie('refreshToken', { ...cookieOptions, sameSite: 'strict' });
+
+  sendSuccess(res, 'User password updated successfully', HttpStatus.OK, result);
 });
