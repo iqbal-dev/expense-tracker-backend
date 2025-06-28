@@ -1,12 +1,13 @@
 import User from '@src/modules/user/v1/user.model';
-import { TUser } from '@src/modules/user/v1/user.type';
+import { TCreateUserInput } from '@src/modules/user/v1/user.type';
+import { generateUniqueEmail } from '@src/utils/emailGenerator';
 
 describe('User Model', () => {
   it('create & save a user successfully', async () => {
-    const newUser: TUser = {
+    const newUser: TCreateUserInput = {
       name: 'Iqbal',
       password: 'iqbal123',
-      email: 'iqbal@gmail.com',
+      email: generateUniqueEmail('user'),
     };
 
     const user = new User(newUser);
@@ -36,7 +37,7 @@ describe('User Model', () => {
     }
   });
   it('should failed if validation failed', async () => {
-    const newUser: TUser = {
+    const newUser: TCreateUserInput = {
       name: 'i',
       email: 'iqbal',
       password: '1232323',

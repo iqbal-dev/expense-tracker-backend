@@ -5,11 +5,12 @@ beforeAll(async () => {
   await mongoose.connect(MONGODB_TEST_URI!);
 });
 
-// afterEach(async () => {
-//   await mongoose.connection.dropDatabase();
-// });
+afterEach(async () => {
+  const db = mongoose.connection.db;
+  if (!db) return;
+  await db.dropDatabase();
+});
 
 afterAll(async () => {
-  await mongoose.connection.dropDatabase();
   await mongoose.disconnect();
 });
