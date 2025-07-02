@@ -221,6 +221,6 @@ Tests are not yet implemented. Recommended tools:
 
 ## 📄 License
 
-MIT License © 2025 [Your Name or Company]
+MIT License © 2025 Md Iqbal Hossain
 
 ---
