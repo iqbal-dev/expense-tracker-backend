@@ -9,9 +9,7 @@ info:
     name: Iqbal
     email: your@email.com
 
-servers:
-  - url: http://localhost:3000/api/v1
-    description: Local development server
+servers: []
 
 tags:
   - name: Auth

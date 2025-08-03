@@ -1,17 +1,15 @@
 // src/app.ts
+import swaggerDocument from '@src/docs/swaggerLoader';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
-import path from 'path';
 import swaggerUi from 'swagger-ui-express';
-import YAML from 'yamljs';
 import { errorHandler } from './middlewares/errorHandler';
 import { notFoundHandler } from './middlewares/notFound';
 import { attachRequestId } from './middlewares/requestId';
 import v1Routes from './routes/v1.routes';
 import httpLogger from './utils/httpLogger';
-import cookieParser from 'cookie-parser';
-const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
 const app: Application = express();
 
 // Security & CORS
