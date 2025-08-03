@@ -15,5 +15,21 @@ describe('Expense Model Test', () => {
 
     expect(result._id).toBeDefined();
     expect(result.title).toBe('Groceries');
+    expect(result.amount).toBe(500.5);
+    expect(result.tags).toContain('food');
+  });
+  it('should fail to create expense without required fields', async () => {
+    try {
+      await Expense.create({});
+    } catch (error) {
+      if (error instanceof mongoose.Error.ValidationError) {
+        expect(error.errors.title.message).toBe('Title is required');
+        expect(error.errors.amount.message).toBe('Amount is required');
+        expect(error.errors.userId.message).toBe('User ID is required');
+        expect(error.errors.categoryId.message).toBe('Category ID is required');
+      } else {
+        throw error;
+      }
+    }
   });
 });
