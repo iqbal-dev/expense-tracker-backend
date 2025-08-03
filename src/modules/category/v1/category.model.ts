@@ -1,6 +1,6 @@
 import { TCategory } from '@src/modules/category/v1/category.type';
 import { Schema, model } from 'mongoose';
-const userSchema = new Schema<TCategory>(
+const categorySchema = new Schema<TCategory>(
   {
     name: {
       type: String,
@@ -23,5 +23,5 @@ const userSchema = new Schema<TCategory>(
   },
 );
 
-const Category = model<TCategory>('Category', userSchema);
+const Category = model<TCategory>('Category', categorySchema);
 export default Category;
