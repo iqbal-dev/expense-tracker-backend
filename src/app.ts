@@ -31,6 +31,9 @@ app.use(httpLogger);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // API Versioning with modular routes
 app.use('/api/v1', v1Routes);
+app.use('/check', (req, res) => {
+  res.send('Server is running');
+});
 
 // Not found route handler
 app.use(notFoundHandler);
