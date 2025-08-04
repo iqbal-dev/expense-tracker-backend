@@ -2,6 +2,7 @@ import app from '@src/app'; // Your Express app
 import Category from '@src/modules/category/v1/category.model';
 import Expense from '@src/modules/expense/v1/expense.model';
 import User from '@src/modules/user/v1/user.model';
+import { generateAccessToken } from '@src/utils/jwt';
 import request from 'supertest';
 const agent = request.agent(app);
 describe('POST /expenses', () => {
@@ -19,7 +20,6 @@ describe('POST /expenses', () => {
     });
 
     const expenseData = {
-      userId: user._id,
       title: 'Lunch at restaurant',
       amount: 25.5,
       date: new Date().toISOString(),
@@ -28,8 +28,10 @@ describe('POST /expenses', () => {
       tags: ['food', 'business'],
     };
 
+    const token = generateAccessToken({ userId: user._id }); // use your real token logic
     const response = await agent
       .post('/api/v1/expenses')
+      .set('Authorization', `Bearer ${token}`)
       .send(expenseData)
       .expect(201);
 
@@ -44,8 +46,15 @@ describe('POST /expenses', () => {
   });
 
   it('should return validation error for missing fields', async () => {
+    const user = await User.create({
+      name: 'Test User',
+      email: 'user@test.com',
+      password: '123456',
+    });
+    const token = generateAccessToken({ userId: user._id });
     const res = await agent
       .post('/api/v1/expenses')
+      .set('Authorization', `Bearer ${token}`)
       .send({}) // Missing required fields
       .expect(400);
 

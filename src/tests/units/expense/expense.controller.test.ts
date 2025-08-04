@@ -16,6 +16,9 @@ describe('Expense Service', () => {
       notes: 'Work lunch',
       tags: ['food'],
     },
+    user: {
+      userId: 'user123',
+    },
   } as Partial<Request> as Request;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

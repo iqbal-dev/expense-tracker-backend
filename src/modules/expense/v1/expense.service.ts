@@ -5,8 +5,10 @@ import { TExpenseCreateInput } from '@src/modules/expense/v1/expense.type';
 import { getUserById } from '@src/modules/user/v1/user.service';
 import { ApiError } from '@src/utils/ApiError';
 
-export const createExpenseService = async (input: TExpenseCreateInput) => {
-  const { userId, categoryId } = input;
+export const createExpenseService = async (
+  input: TExpenseCreateInput & { userId: string },
+) => {
+  const { categoryId, userId } = input;
   const user = await getUserById(userId);
   if (!user) {
     throw new ApiError('User not found', HttpStatus.NOT_FOUND);

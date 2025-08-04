@@ -6,8 +6,6 @@ export const createExpenseValidationSchema = z.object({
     .nonempty('Title is required')
     .min(3, 'Title must be at least 3 characters'),
 
-  userId: z.string().nonempty('User ID is required'),
-
   amount: z
     .number({
       required_error: 'Amount is required',

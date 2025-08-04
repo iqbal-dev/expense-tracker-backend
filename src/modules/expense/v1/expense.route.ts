@@ -1,3 +1,4 @@
+import { authMiddleware } from '@src/middlewares/auth';
 import validateRequest from '@src/middlewares/validateRequest';
 import { createExpenseController } from '@src/modules/expense/v1/expense.controller';
 import { createExpenseValidationSchema } from '@src/modules/expense/v1/expense.validation';
@@ -7,6 +8,7 @@ const router = Router();
 router
   .route('/')
   .post(
+    authMiddleware,
     validateRequest(createExpenseValidationSchema),
     createExpenseController,
   );
