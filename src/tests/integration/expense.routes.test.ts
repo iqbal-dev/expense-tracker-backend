@@ -19,11 +19,11 @@ describe('POST /expenses', () => {
     });
 
     const expenseData = {
-      userId: user._id.toString(),
+      userId: user._id,
       title: 'Lunch at restaurant',
       amount: 25.5,
       date: new Date().toISOString(),
-      categoryId: category._id.toString(),
+      categoryId: category._id,
       notes: 'Business meeting',
       tags: ['food', 'business'],
     };
